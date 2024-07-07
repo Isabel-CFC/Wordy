@@ -1,0 +1,92 @@
+<%- include("partials/header.ejs") %>
+
+<section id="header-img">
+    <a href="/"><img class="go-back image" src="../images/wordy-logo.svg" alt="wordy logo"></a>
+</section>
+
+<section id="intro-container">
+    <div id="result-container">
+        <div id="result-text">
+            <h2 id="wordH2"><%= word %></h2>
+
+            <%# 'if...else' statements to manage the content coming from the public API. %>
+
+            <% if (syllables === "No available syllables.") { %>
+                <p class="syll"><%= syllables %> [<%= pronunciation %>]</p>
+            <% } else { %>
+                <p class="syll"><%= syllables.count %> <%= (syllables.count === 1) ? "syllable" : "syllables" %>: <%= syllables.list %> [<%= pronunciation %>]</p>
+            <% }; %>
+
+            <% if (definitions === "No available definition.") { %>
+                <p id="no-definitions"><%= definitions %></p>
+            <% } else { %>
+                <ol class="definitions-list">
+                    <% definitions.slice(0, 5).forEach((result) => { %>
+                        <li>
+                            <p id="category-text"><%= result.partOfSpeech %></p>
+                            <p id="definition-text"><%= result.definition %></p>
+                        </li>
+                    <% }); %>
+                </ol>
+            <% } %>
+        </div>
+
+        <%# The image should be illustrative of the searched word, but the API's request limit is low. %>
+
+        <div id="result-image">
+            <% if (image === "Limit reached.") { %>
+                <img class="portrait alt-img image" src="../images/baby-duck.jpg" alt="Baby duck">
+                <p id="alt-image-caption">If you are reading this, the <a href="https://rapidapi.com/letscrape-6bRBa3QguO5/api/real-time-image-search" target=”_blank”>Real-Time Image Search's</a> request limit has been reached. Here's a baby duck instead.</p>
+            <% } else { %>
+                <img class="<%= imageWidth > imageHeigth ? 'landscape result-img image' : 'portrait result-img image' %>" src="<%= image %>" alt="Random image depicting the searched word">
+            <% } %>
+        </div>
+    </div>
+</section>
+
+<section id="collapsible-container">
+    <div id="collapsible-content">
+        <button class="collapsible-button">Examples</button>
+        <div class="collapsible-list">
+            <% renderListSection("examples", examples, 5) %>
+        </div>
+        <button class="collapsible-button">Synonyms</button>
+        <div class="collapsible-list">
+            <% renderListSection("synonyms", synonyms, 10) %>
+        </div>
+        <button class="collapsible-button">Antonyms</button>
+        <div class="collapsible-list">
+            <% renderListSection("antonyms", antonyms, 10) %>
+        </div>
+        <button class="collapsible-button">Rhymes</button>
+        <div class="collapsible-list">
+            <% renderListSection("rhymes", rhymes, 10) %>
+        </div>
+        <button class="collapsible-button">Frequency</button>
+        <div class="collapsible-list">
+            <% if (frequency === "No available frequency data.") { %>
+                <p id="freq-text"><%= frequency %></p>
+            <% } else { %>
+                <p id="freq-text">This word scores <span id="freq-bold"><%= frequency %> out of 7</span> in terms of commonality in the English language.</p>  
+            <% } %> 
+        </div>
+    </div>  
+</section>
+
+<%- include("partials/footer.ejs") %>
+
+<%# This function sets the content of most collapsibles: "No available ..." OR a list with a max number of items. %>
+
+<% function renderListSection(title, list, limit) { %>
+    <% if (list === `No available ${title}.`) { %>
+        <p><%= list %></p>
+    <% } else { %>
+        <ol>
+            <% list.slice(0, limit).forEach((item) => { %>
+                <li>
+                    <p><%= item %></p>
+                </li>
+            <% }) %>
+        </ol>
+    <% } %>
+<% } %>

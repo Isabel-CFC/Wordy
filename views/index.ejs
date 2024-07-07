@@ -1,0 +1,25 @@
+<%- include("partials/header.ejs") %>
+
+<section id="content-container">
+    <div id="image-container">
+        <img class="logo image" src="images/wordy-logo.svg" alt="Wordy logo">
+    </div>
+    <div id="form-container">
+        <form id="form" action="/search-result" method="POST">
+            <div id="search-bar-container">
+                <input id="search-bar" type="text" name="word" placeholder="What's the word?" aria-label="Search for a word">
+            </div>
+            <div id="buttons-container">
+                <input class="search-button button" type="submit" name="searchButton" value="Search">
+                <input class="random-button button" type="submit" name="randomWord" value="Random">
+            </div>
+        </form>
+    </div>
+    <div id="error-container">
+        <% if(locals.errorMessage) { %>
+            <p id="error-message"><%= errorMessage %></p>
+        <% } %>
+    </div>
+</section>
+
+<%- include("partials/footer.ejs") %>

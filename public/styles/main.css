@@ -1,0 +1,268 @@
+/* Global */
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    font-family: "Libre Franklin", serif;
+}
+
+body {
+    background-color: #faf7c7;
+}
+
+/* index.ejs */
+
+#content-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow-y: hidden;
+    height: 90vh;
+    padding: 0 20px;
+}
+
+.logo {
+    width: 100%;
+    max-width: 601px;
+    margin-bottom: 0;
+}
+
+#form-container,
+#form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 601px;
+}
+
+#form-container {
+    margin: 30px 0;
+}
+
+#search-bar {
+    width: 92.679%;
+    border: 2px solid #166464;
+    border-radius: 4px;
+    padding: 12px 3.232%;
+    margin-bottom: 12px;
+}
+
+#buttons-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.button {
+    background-color: #166464;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    width: 49.002%;
+    padding: 12px 20px;
+    margin-bottom: 12px;
+    font-size: 1rem;
+    text-align: center;
+    cursor: pointer;
+}
+
+.button:hover {
+    opacity: 0.5;
+}
+
+#error-container {
+    width: 100%;
+    text-align: center;
+}
+
+#error-message {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #c70000;
+}
+
+/* search-result.ejs */
+
+#header-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px;
+}
+
+.go-back {
+    width: 100%;
+    max-width: 450px;
+}
+
+#intro-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 50px;
+}
+
+#result-container {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    background-color: #FDFCEC;
+    width: 100%;
+    max-width: 900px;
+    margin-bottom: 12px;
+}
+
+#result-text {
+    width: 100%;
+    max-width: 618px;
+    padding: 30px;
+}
+
+#wordH2 {
+    font-size: 2rem;
+}
+
+.syll {
+    font-size: 1rem;
+}
+
+#no-definitions {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+#category-text {
+    font-size: 0.9rem;
+    font-style: italic;
+    font-weight: 600;
+}
+
+#definition-text {
+    font-size: 1rem;
+}
+
+#alt-image-caption {
+    font-size: 0.85rem;
+    text-align: justify;
+    opacity: 0.85;
+}
+
+#result-image,
+.portrait,
+.landscape {
+    width: 100%;
+    max-width: 270px;
+}
+
+#result-image {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+#collapsible-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 50px;
+    margin-top: 0;
+}
+
+#collapsible-content {
+    width: 100%;
+    max-width: 900px;
+}
+
+.collapsible-button {
+    background-color: #166464;
+    color: white;
+    cursor: pointer;
+    width: 100%;
+    padding: 18px;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 1rem;
+}
+
+.collapsible-button:hover {
+    opacity: 0.5;
+}
+  
+.collapsible-button:after {
+    content: '\002B';
+    color: white;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+}
+  
+.active:after {
+    content: "\2212";
+}
+  
+.collapsible-list {
+    padding: 0 18px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    background-color: #FDFCEC;
+}
+
+.collapsible-list > p {
+    padding-left: 22px;
+}
+
+#freq-bold {
+    font-weight: 600;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #166464;
+    height: 10vh;
+}
+
+.footer-text {
+    color: white;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 767px) {
+    #buttons-container {
+        display: inline-block;
+    }
+
+    .button {
+        width: 100%
+    }
+
+    #result-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: center;
+        padding: 15px;
+    }
+
+    #result-text,
+    #result-image {
+        padding: 0;
+    }
+
+    .collapsible-list {
+        padding-right: 40px;
+    }
+    
+    .footer-text {
+        font-size: 0.8rem;
+    }
+}
