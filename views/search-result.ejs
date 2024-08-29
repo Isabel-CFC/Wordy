@@ -38,7 +38,7 @@
                 <img class="portrait alt-img image" src="../images/baby-duck.jpg" alt="Baby duck">
                 <p id="alt-image-caption">If you are reading this, the <a href="https://rapidapi.com/letscrape-6bRBa3QguO5/api/real-time-image-search" target=”_blank”>Real-Time Image Search's</a> request limit has been reached. Here's a baby duck instead.</p>
             <% } else { %>
-                <img class="<%= imageWidth > imageHeigth ? 'landscape result-img image' : 'portrait result-img image' %>" src="<%= image %>" alt="Random image depicting the searched word">
+                <img class="<%= parseInt(imageWidth) > parseInt(imageHeight) ? 'landscape result-img image' : 'portrait result-img image' %>" src="<%= image %>" alt="Random image depicting the searched word">
             <% } %>
         </div>
     </div>

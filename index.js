@@ -1,3 +1,5 @@
+// It's not working when you first deploy it and hit Enter. Async functions error?
+
 import express from "express";
 import axios from "axios";
 import bodyParser from "body-parser";
@@ -103,7 +105,7 @@ app.post("/search-result", async (req, res) => {
             });
             image = imageSearch.data.data[0].url;
             imageWidth = imageSearch.data.data[0].width;
-            imageHeight = imageSearch.data.data[0].heigth;
+            imageHeight = imageSearch.data.data[0].height;
         } catch (error) {
             console.log(error.message);
             image = "Limit reached.";
